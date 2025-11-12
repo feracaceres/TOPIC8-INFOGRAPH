@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Topic 8: The External Openness of the Spanish Economy</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+
+        /* Contenedor principal de la infografía */
+        .infographic-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            background-color: #ffffff;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.07);
+            overflow: hidden; /* Para que los bordes redondeados se apliquen */
+        }
+
+        /* Cabecera */
+        header {
+            padding: 30px 40px;
+            background-color: #003366; /* Azul marino académico */
+            color: #ffffff;
+            border-bottom: 5px solid #0056b3; /* Un acento azul más brillante */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            line-height: 1.2;
+        }
+        header p {
+            margin: 5px 0 0;
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        /* Contenido principal */
+        .content {
+            padding: 30px 40px;
+        }
+
+        /* Estilo de las secciones */
+        .section {
+            margin-bottom: 40px;
+        }
+        .section h2 {
+            font-size: 1.6rem;
+            color: #003366;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos para listas de puntos clave */
+        ul.key-points {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul.key-points li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+        ul.key-points li::before {
+            content: '✔'; /* Símbolo de check */
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #0056b3; /* Azul de acento */
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Estilos para las tarjetas de "Case Studies" */
+        .case-studies-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .case-card {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px 20px;
+            flex-basis: 250px;
+            flex-grow: 1;
+        }
+        .case-card h4 {
+            margin: 0 0 5px 0;
+            color: #003366;
+        }
+        .case-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        /* Estilos para la sección de Balanza de Pagos */
+        .bop-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .bop-box {
+            flex-basis: 300px;
+            flex-grow: 1;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .bop-box h4 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+        .bop-box.deficit {
+            border-left: 5px solid #d9534f; /* Rojo para déficit */
+        }
+        .bop-box.deficit h4 {
+            color: #d9534f;
+        }
+        .bop-box.surplus {
+            border-left: 5px solid #5cb85c; /* Verde para superávit */
+        }
+        .bop-box.surplus h4 {
+            color: #5cb85c;
+        }
+
+        /* Gráfico simple de evolución (CSS) */
+        .chart-container {
+            background-color: #f9f9f9;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 30px 20px 20px 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        .chart-container::before {
+            content: 'Zero Line (GDP %)';
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            right: 20px;
+            border-top: 2px dashed #aaa;
+            transform: translateY(-50%);
+            color: #888;
+            font-size: 0.8rem;
+            text-align: right;
+            padding-top: 5px;
+        }
+        .chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 200px;
+            padding: 0 10px;
+            position: relative;
+            z-index: 2;
+        }
+        .bar {
+            width: 15%;
+            background-color: #ccc;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+        }
+        .bar .label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #555;
+            position: absolute;
+            bottom: -20px;
+        }
+        .bar .value {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #fff;
+            padding-bottom: 5px;
+        }
+
+        /* Barras del gráfico */
+        .bar-deficit {
+            height: 100%; /* 10% de 200px (mitad) */
+            background-color: #d9534f;
+            align-self: flex-start; /* Crece hacia abajo */
+            border-radius: 0 0 5px 5px;
+            justify-content: flex-start;
+        }
+        .bar-deficit .value {
+            padding-top: 5px;
+        }
+
+        .bar-surplus {
+            height: 25%; /* 2.5% de 200px (mitad) */
+            background-color: #5cb85c;
+            align-self: flex-end; /* Crece hacia arriba */
+        }
+
+        .bar-surplus-small {
+            height: 12%; /* ej. 1.2% */
+            background-color: #5cb85c;
+            align-self: flex-end;
+        }
+
+        /* Pie de página */
+        footer {
+            text-align: center;
+            padding: 20px 40px;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="infographic-container">
+        <header>
+            <h1>Topic 8: The External Openness of the Spanish Economy</h1>
+            <p>A structural summary of Spain's internationalization and Balance of Payments</p>
+        </header>
+
+        <div class="content">
+
+            <!-- SECCIÓN 1: OBJETIVO DE APRENDIZAJE 1 -->
+            <section class="section" id="lo1">
+                <h2>LO1: The Impact of EU Membership (Since 1986)</h2>
+                <p>Joining the European Union was the key catalyst that transformed Spain from a protected, inward-looking economy into a modern, open, and competitive global player.</p>
+                <ul class="key-points">
+                    <li><strong>Market Access:</strong> Gave Spanish firms tariff-free access to the vast European Single Market, allowing for economies of scale.</li>
+                    <li><strong>Modernization & Stability:</strong> Forced policy reforms, implemented fiscal discipline (especially with the Euro), and lowered capital costs.</li>
+                    <li><strong>Attracted FDI:</strong> Spain became a prime destination for Foreign Direct Investment, bringing in new technology and capital.</li>
+                    <li><strong>Infrastructure Funds:</strong> Cohesion and Agricultural funds (ERDF, CAP) were crucial for developing modern infrastructure (e.g., high-speed rail).</li>
+                    <li><strong>Economic Convergence:</strong> Spain's per capita income rapidly converged (grew closer) to the EU average.</li>
+                </ul>
+
+                <h3>Case Studies: From Domestic Players to Global Leaders</h3>
+                <div class="case-studies-container">
+                    <div class="case-card">
+                        <h4>Inditex (Zara)</h4>
+                        <p>The world's largest fast-fashion retailer, a master of global supply chain management.</p>
+                    </div>
+                    <div class="case-card">
+                        <h4>Banco Santander & BBVA</h4>
+                        <p>Two of the largest banks in the Eurozone, with a massive presence in Europe and Latin America.</p>
+                    </div>
+                    <div class="case-card">
+                        <h4>Iberdrola</h4>
+                        <p>A multinational utility company that has become a world leader in renewable energy.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: OBJETIVO DE APRENDIZAJE 2 -->
+            <section class="section" id="lo2">
+                <h2>LO2: Trends in the Balance of Payments (BoP)</h2>
+                <p>The BoP Current Account (CA) tracks a nation's trade (goods & services) and income with the rest of the world. Spain's CA has undergone a structural turnaround.</p>
+                <div class="bop-container">
+                    <div class="bop-box deficit">
+                        <h4>CA DEFICIT (The Past)</h4>
+                        <p>Spain was spending/investing more abroad than it was earning. This meant it was a <strong>net borrower</strong>, relying on foreign capital to finance its deficit.</p>
+                    </div>
+                    <div class="bop-box surplus">
+                        <h4>CA SURPLUS (The Present)</h4>
+                        <p>Spain is now earning more from abroad than it spends. This means it has become a <strong>net lender</strong> to the rest of the world, increasing its financial stability.</p>
+                    </div>
+                </div>
+                <h3>What is Driving the New Surplus?</h3>
+                <ul class="key-points">
+                    <li><strong>Balance of Goods:</strong> The historical trade deficit has been massively reduced. Spanish firms are more competitive and export more.</li>
+                    <li><strong>Balance of Services:</strong> This is the "jewel in the crown". Spain runs a massive surplus here, driven by:
+                        <br>1. <strong>Tourism</strong> (Dominant)
+                        <br>2. <strong>Non-Tourist Services</strong> (e.g., consulting, technology - rapidly growing)
+                    </li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN 3: OBJETIVO DE APRENDIZAJE 3 -->
+            <section class="section" id="lo3">
+                <h2>LO3: Evolution of the Current Account Balance</h2>
+                <p>The shift from deficit to surplus is the most important recent story in Spain's external sector.</p>
+
+                <div class="chart-container">
+                    <div class="chart">
+                        <!-- BARRA 1: PRE-CRISIS DEFICIT -->
+                        <div class="bar">
+                            <div class="bar-deficit" style="height: 100px;" title="-10% of GDP">
+                                <span class="value">-10.0%</span>
+                            </div>
+                            <span class="label">2008 (Peak Deficit)</span>
+                        </div>
+                        
+                        <!-- BARRA 2: AJUSTE -->
+                        <div class="bar">
+                            <div class="bar-surplus-small" style="height: 24px;" title="+1.2% of GDP">
+                                <span class="value">+1.2%</span>
+                            </div>
+                            <span class="label">2013 (First Surplus)</span>
+                        </div>
+
+                        <!-- BARRA 3: SUPERÁVIT RECIENTE -->
+                        <div class="bar">
+                            <div class="bar-surplus" style="height: 50px;" title="+2.5% of GDP">
+                                <span class="value">+2.5%</span>
+                            </div>
+                            <span class="label">2023 (Resilient Surplus)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <footer>
+            <p>Infographic for Topic 8: The External Openness of the Spanish Economy. (ADE - World Economy)</p>
+        </footer>
+    </div>
+
+</body>
+</html>
